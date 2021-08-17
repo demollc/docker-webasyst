@@ -1,0 +1,28 @@
+version: "3.1"
+services:
+    mariadb:
+      image: mariadb
+      restart: always
+      container_name: wa-mariadb
+      volumes:
+        - ../mysql:/var/lib/mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=webasyst
+        - MYSQL_DATABASE=wa
+        - MYSQL_USER=webasyst
+        - MYSQL_PASSWORD=webasyst
+      ports:
+        - "8103:3306"
+
+    php-fpm:
+      image: bitnami/php-fpm:7.4-prod
+      depends_on:
+      - mariadb
+      container_name: wa-php-fpm
+      working_dir: /webasyst
+      volumes:
+        - ./webasyst:/webasyst
+      ports:
+      - "80:8080"
+      command: sh -c "exec php wa.php startServer"
+      
