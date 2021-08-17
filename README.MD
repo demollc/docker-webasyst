@@ -1,10 +1,13 @@
 # Webasyst Docker PHP-FPM 7.4 & MariaDb
 
-No nginx webserver. Internal php-server and a running script.
+No nginx/apache webserver. Internal php-server and a running script.
 
 ## Quickstart
 
-1. Download current repository
+1. Clone current repository
+   ```shell
+   git clone https://github.com/demollc/docker-webasyst.git
+   ```
 2. Clone Webasyst Framework repository to subfolder `webasyst`.
     ``` shell
    cd webasyst
@@ -20,6 +23,7 @@ No nginx webserver. Internal php-server and a running script.
     docker-compose up
     ```
    This will download and execute containers.
+5. The site should be available on http://localhost/ 
 
 ### Shop-Script
 If you have access to Shop-Script repository, you can add it to the folder `webasyst`
